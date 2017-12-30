@@ -1,7 +1,4 @@
 pragma solidity ^0.4.9;
-
-import "./Receiver.sol";
- 
  
  /* https://github.com/LykkeCity/EthereumApiDotNetCore/blob/master/src/ContractBuilder/contracts/token/SafeMath.sol */
 contract SafeMath {
@@ -24,15 +21,19 @@ contract SafeMath {
         return x * y;
     }
 }
+
+ contract ContractReceiver {
+    function tokenFallback(address _from, uint _value, bytes _data);
+}
  
 contract ERC223Token is SafeMath {
     
-    event Transfer(address indexed _from, address indexed _to, uint256 _value, bytes _data);
+  event Transfer(address indexed _from, address indexed _to, uint256 _value, bytes _data);
 
   mapping(address => uint) balances;
   
-  string public name    = "Mulla Token";
-  string public symbol  = "Mulla";
+  string public name    = "Token";
+  string public symbol  = "TKN";
   uint8 public decimals = 18;
   uint256 public totalSupply;
   
